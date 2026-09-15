@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
 	if (argc > 1) {
 		filename = argv[1];
 	}
-	filename = "../rooms/" + filename + ".room.gmx";
+	filename = "GameData/rooms/" + filename + ".room.gmx";
 
 	Undertale::Sheets sheets;
 	Undertale::Room testRoom = Undertale::LoadRoomFromFile(filename, sheets);

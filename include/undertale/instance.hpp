@@ -6,7 +6,7 @@
 
 namespace Undertale {
 
-	constexpr char OBJ_FILEPREFIX[] = "../objects/";
+	constexpr char OBJ_FILEPREFIX[] = "GameData/objects/";
 	constexpr char OBJ_FILEEXTENSION[] = ".object.gmx";
 
 	class Instance {

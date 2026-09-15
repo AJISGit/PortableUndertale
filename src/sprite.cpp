@@ -6,7 +6,7 @@
 
 Undertale::Sprite Undertale::LoadSprite(std::string_view spriteName) {
 
-	const std::string prefix = "../sprites/";
+	const std::string prefix = "GameData/sprites/";
 	std::string filename = prefix + std::string(spriteName) + ".sprite.gmx";
 
 	pugi::xml_document doc;

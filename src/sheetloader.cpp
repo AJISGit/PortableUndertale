@@ -8,9 +8,9 @@ Texture2D Undertale::Sheets::GetSheet(std::string_view name, Undertale::SheetTyp
 		std::string prefix;
 
 		if (type == Undertale::SheetType::Bg) {
-			prefix = "../background/images/";
+			prefix = "GameData/background/images/";
 		} else {
-			prefix = "../sprites/";
+			prefix = "GameData/sprites/";
 		}
 
 		std::string filename = prefix + std::string(name);
