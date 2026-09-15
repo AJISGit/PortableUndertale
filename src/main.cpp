@@ -28,18 +28,16 @@ int main(int argc, char** argv) {
 		if (Undertale::currentSong != nullptr) {
 			UpdateMusicStream(*Undertale::currentSong);
 		}
-			BeginDrawing();
-			ClearBackground(BLACK);
-			BeginMode2D(camera);	
-				testRoom.Draw();
 		testRoom.Update(GetFrameTime());
 
-
-			
+		BeginDrawing();
+			ClearBackground(BLACK);
+				BeginMode2D(camera);	
+			testRoom.Draw();	
 
 			EndMode2D();
 
-			DrawFPS(10, 10);
+		DrawFPS(10, 10);
 			
 		EndDrawing();
 	}

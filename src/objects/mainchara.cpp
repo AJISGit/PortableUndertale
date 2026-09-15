@@ -43,26 +43,26 @@ void Undertale::ObjMainChara::Update(float deltaTime, void* arg) {
 	}
 
 	Vector2 pos = position;
-	pos.y += GetSprite().size.y;
+	pos.y += 19.0f;//GetSprite().size.y;
 	Rectangle plrRect = { pos.x, pos.y, GetSprite().size.x, GetSprite().size.y };
 
-	for (Undertale::Instance* inst : solidInstances) {
-		Vector2 sprSize = inst->GetSprite().size;
-		Vector2 instPos = inst->position;
-		Texture2D texture = sheetloader.GetSheet(sprite.frames[inst->GetSpriteFrame()], Undertale::SheetType::Sprite);
-		/*
-		instPos.x += inst->GetSprite().bbox.left;
-		instPos.y += inst->GetSprite().bbox.top;
-		instPos.y -= texture.height - inst->GetSprite().bbox.bottom;
-		// */
-		Rectangle instRect = { instPos.x, instPos.y, (float) inst->GetSprite().size.x, (float) inst->GetSprite().size.y * room->GetCamera().zoom };
+	for (Undertale::Instance* solidInst : solidInstances) {
+		Vector2 sprSize = solidInst->GetSprite().size;
+		Vector2 instPos = solidInst->position;
+		Undertale::Sprite instSpr = solidInst->GetSprite();
+		Texture2D texture = sheetloader.GetSheet(instSpr.frames[solidInst->GetSpriteFrame()], Undertale::SheetType::Sprite);
+
+		instPos.x += instSpr.bbox.left;
+		instPos.y += instSpr.bbox.top;
+		instPos.y -= texture.height - instSpr.bbox.bottom;
+
+		Rectangle instRect = { instPos.x, instPos.y, (float) texture.width, (float) texture.height };
 		Color color = { (unsigned char) GetRandomValue(0, 255), (unsigned char) GetRandomValue(0, 255), (unsigned char) GetRandomValue(0, 255), 200 };
-//		DrawRectangleRec(instRect, color);
-		DrawRectangleLinesEx(instRect, 2.0f, color);
-		DrawRectangleLinesEx(plrRect, 2.0f, BLACK);
+//		DrawRectangleLinesEx(instRect, 2.0f, color);
+//		DrawRectangleLinesEx(plrRect, 2.0f, BLACK);
 
 		if (CheckCollisionRecs(plrRect, instRect)) {
-			std::cout << "Collision time: " << inst->GetSprite().frames[inst->GetSpriteFrame()] << '\n';
+			std::cout << "Collision time: " << instSpr.frames[solidInst->GetSpriteFrame()] << '\n';
 			position = lastPos;
 			break;
 		}
