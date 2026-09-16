@@ -2,6 +2,7 @@
 #include <undertale/objects/spiketile1.hpp>
 #include <undertale/objects/ruinsmusic.hpp>
 #include <undertale/objects/mainchara.hpp>
+#include <undertale/objects/introimage.hpp>
 #include <undertale/supportedinstances.hpp>
 
 #include <pugixml.hpp>
@@ -101,6 +102,8 @@ Undertale::Instance* Undertale::CreateInstanceFromObjName(std::string_view objNa
 		return new Undertale::ObjRuinsMusic();
 	} else if (objName == "obj_mainchara") {
 		return new Undertale::ObjMainChara();
+	} else if (objName == "obj_introimage") {
+		return new Undertale::ObjIntroImage();
 	}
 
 	return nullptr;	
