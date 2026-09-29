@@ -5,6 +5,7 @@
 namespace Undertale {
 
 	extern Music* currentSong;
+	extern bool debug;
 
 }
 

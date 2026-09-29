@@ -35,6 +35,7 @@ void Undertale::Instance::LoadBasicInstance(bool hasSpriteArg) {
 
 	std::string spriteName = doc.child("object").child("spriteName").text().as_string();
 	bool isSolid = doc.child("object").child("solid").text().as_int();
+	visible = doc.child("object").child("solid").text().as_int();
 
 	if (isSolid == 0) {
 		solid = false;
@@ -45,6 +46,7 @@ void Undertale::Instance::LoadBasicInstance(bool hasSpriteArg) {
 	if (!hasSpriteArg) { return; }
 	sprite = Undertale::LoadSprite(spriteName);
 	hasSprite = true;
+	visible = true;
 
 }
 
@@ -86,7 +88,8 @@ void Undertale::Instance::DecrementSpriteFrame() {
 
 void Undertale::DrawInstance(Undertale::Instance &inst, Undertale::Sheets& sheets) {
 
-	if (!inst.HasSprite()) { return; }
+//	if (!inst.HasSprite()) { return; }
+	if (!inst.visible) { return; }
 	Undertale::DrawSprite(inst.GetSprite(), inst.position, inst.GetSpriteFrame(), sheets);
 
 }

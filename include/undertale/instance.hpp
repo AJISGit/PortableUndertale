@@ -24,6 +24,7 @@ namespace Undertale {
 		public:
 
 		Vector2 position = { };
+		bool visible = false;
 
 		Instance(std::string_view filename = "NO_FILE_PLACEHOLDER");
 		virtual ~Instance();

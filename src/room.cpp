@@ -37,10 +37,10 @@ std::vector<Undertale::Tile> Undertale::Room::GetTiles() const {
 void Undertale::Room::Update(float deltaTime) {
 
 	for (Undertale::Instance* inst : instances) {
-		inst->Update(deltaTime);
+		inst->Update(deltaTime, this);
 	}
 	for (Undertale::Instance* inst : solidInstances) {
-		inst->Update(deltaTime);
+		inst->Update(deltaTime, this);
 	}
 
 	if (plr == nullptr) { return; };
@@ -60,10 +60,14 @@ void Undertale::Room::Draw() {
 	}
 	for (Undertale::Instance* inst : instances) {
 		Undertale::DrawInstance(*inst, sheets);
+		if (inst == plr) {
+			continue;
+		}
 	}
 	for (Undertale::Instance* inst : solidInstances) {
 		Undertale::DrawInstance(*inst, sheets);
 	}
+	Undertale::DrawInstance(*plr, sheets);
 
 }
 

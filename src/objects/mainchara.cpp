@@ -19,7 +19,7 @@ void Undertale::ObjMainChara::Update(float deltaTime, void* arg) {
 	std::vector<Instance*>& solidInstances = room->GetSolidInstances();
 	Undertale::Sheets& sheetloader = room->GetSheetloader();
 
-	constexpr float speed = 75.0f;
+	constexpr float speed = 50.0f;
 	Vector2 lastPos = position;
 
 	if (IsKeyDown(KEY_LEFT)) {
@@ -44,7 +44,7 @@ void Undertale::ObjMainChara::Update(float deltaTime, void* arg) {
 
 	Vector2 pos = position;
 	pos.y += 19.0f;//GetSprite().size.y;
-	Rectangle plrRect = { pos.x, pos.y, GetSprite().size.x, GetSprite().size.y };
+	Rectangle plrRect = { pos.x + 2, pos.y + 15, 16, 14 };
 
 	for (Undertale::Instance* solidInst : solidInstances) {
 		Vector2 sprSize = solidInst->GetSprite().size;
@@ -58,8 +58,6 @@ void Undertale::ObjMainChara::Update(float deltaTime, void* arg) {
 
 		Rectangle instRect = { instPos.x, instPos.y, (float) texture.width, (float) texture.height };
 		Color color = { (unsigned char) GetRandomValue(0, 255), (unsigned char) GetRandomValue(0, 255), (unsigned char) GetRandomValue(0, 255), 200 };
-//		DrawRectangleLinesEx(instRect, 2.0f, color);
-//		DrawRectangleLinesEx(plrRect, 2.0f, BLACK);
 
 		if (CheckCollisionRecs(plrRect, instRect)) {
 			std::cout << "Collision time: " << instSpr.frames[solidInst->GetSpriteFrame()] << '\n';
