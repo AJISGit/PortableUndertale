@@ -23,7 +23,7 @@ Undertale::Instance::~Instance() {
 }
 
 
-void Undertale::Instance::LoadBasicInstance(bool hasSpriteArg) {
+pugi::xml_document Undertale::Instance::LoadObjXmlDoc() {
 
 	std::string filepath = Undertale::OBJ_FILEPREFIX + filename + Undertale::OBJ_FILEEXTENSION;
 	pugi::xml_document doc;
@@ -32,8 +32,23 @@ void Undertale::Instance::LoadBasicInstance(bool hasSpriteArg) {
 		std::cerr << result.description() << '\n';
 		std::exit(1);
 	}
+	return doc;
+
+}
+
+
+Undertale::Sprite Undertale::Instance::LoadSpriteFromObjFile(const pugi::xml_document& doc) {
 
 	std::string spriteName = doc.child("object").child("spriteName").text().as_string();
+	return Undertale::LoadSprite(spriteName);
+
+}
+
+
+void Undertale::Instance::LoadBasicInstance(bool hasSpriteArg) {
+
+	pugi::xml_document doc = LoadObjXmlDoc();
+
 	bool isSolid = doc.child("object").child("solid").text().as_int();
 	visible = doc.child("object").child("solid").text().as_int();
 
@@ -44,7 +59,7 @@ void Undertale::Instance::LoadBasicInstance(bool hasSpriteArg) {
 	}
 
 	if (!hasSpriteArg) { return; }
-	sprite = Undertale::LoadSprite(spriteName);
+	sprite = LoadSpriteFromObjFile(doc);
 	hasSprite = true;
 	visible = true;
 

@@ -1,6 +1,8 @@
 #pragma once
+#include <undertale/undertale.hpp>
 #include <undertale/sheetloader.hpp>
 #include <undertale/sprite.hpp>
+#include <pugixml.hpp>
 #include <string>
 
 
@@ -17,6 +19,8 @@ namespace Undertale {
 
 		protected:
 		std::string filename;
+		pugi::xml_document LoadObjXmlDoc();
+		Sprite LoadSpriteFromObjFile(const pugi::xml_document& obj);
 		void LoadBasicInstance(bool hasSprite = true);
 		Sprite sprite = { };
 		bool hasSprite = false;

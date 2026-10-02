@@ -29,5 +29,7 @@ namespace Undertale {
 
 	Sprite LoadSprite(std::string_view spriteName);
 	void DrawSprite(const Sprite& sprite, Vector2 position, int frame, Sheets& sheets);
+	bool operator==(const Sprite& sprite1, const Sprite& sprite2);
+	bool operator!=(const Sprite& sprite1, const Sprite& sprite2);
 
 }

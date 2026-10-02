@@ -1,4 +1,5 @@
 #include <undertale/room.hpp>
+#include <undertale/objects/time.hpp>
 #include <iostream>
 
 
@@ -34,6 +35,8 @@ std::vector<Undertale::Tile> Undertale::Room::GetTiles() const {
 
 
 void Undertale::Room::Update(float deltaTime) {
+
+	Undertale::objTimeInst.Update(deltaTime, this);
 
 	for (Undertale::Instance* inst : instances) {
 		inst->Update(deltaTime, this);
@@ -73,6 +76,11 @@ void Undertale::Room::Draw() {
 
 Camera2D& Undertale::Room::GetCamera() {
 	return camera;
+}
+
+
+Undertale::ObjMainChara* Undertale::Room::GetPlayer() {
+	return plr;
 }
 
 

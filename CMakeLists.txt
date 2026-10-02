@@ -18,6 +18,7 @@ add_executable(undertale
 	include/undertale/undertale.hpp
 	include/undertale/sprite.hpp
 	include/undertale/instance.hpp
+	include/undertale/objects/time.hpp
 	include/undertale/objects/introimage.hpp
 	include/undertale/objects/ruinsmusic.hpp
 	include/undertale/objects/spiketile2.hpp
@@ -32,6 +33,7 @@ add_executable(undertale
 	src/undertale.cpp
 	src/sprite.cpp
 	src/instance.cpp
+	src/objects/time.cpp
 	src/objects/introimage.cpp
 	src/objects/ruinsmusic.cpp
 	src/objects/spiketile2.cpp

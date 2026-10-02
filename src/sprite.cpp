@@ -49,3 +49,13 @@ void Undertale::DrawSprite(const Undertale::Sprite &sprite, Vector2 position, in
 
 }
 
+
+// If it becomes necessary, I'll make it compare all the frames later.
+bool Undertale::operator==(const Undertale::Sprite& sprite1, const Undertale::Sprite& sprite2) {
+	return sprite1.frames[0] == sprite2.frames[0];
+}
+
+
+bool Undertale::operator!=(const Undertale::Sprite& sprite1, const Undertale::Sprite& sprite2) {
+	return not (sprite1 == sprite2);
+}

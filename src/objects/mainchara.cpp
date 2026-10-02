@@ -1,9 +1,14 @@
 #include <undertale/objects/mainchara.hpp>
+#include <undertale/objects/time.hpp>
 #include <undertale/room.hpp>
 
 
 Undertale::ObjMainChara::ObjMainChara(std::string_view filename) : Undertale::Instance::Instance(filename) {
 	LoadBasicInstance();
+	upSprite = LoadSprite("spr_maincharau");
+	downSprite = LoadSprite("spr_maincharad");
+	leftSprite = LoadSprite("spr_maincharal");
+	rightSprite = LoadSprite("spr_maincharar");
 }
 
 
@@ -17,29 +22,50 @@ void Undertale::ObjMainChara::Update(float deltaTime, void* arg) {
 	std::vector<Instance*>& solidInstances = room->GetSolidInstances();
 	Undertale::Sheets& sheetloader = room->GetSheetloader();
 
+	// ---- Movement code ----
 	constexpr float speed = 50.0f;
 	Vector2 lastPos = position;
 
-	if (IsKeyDown(KEY_LEFT)) {
-
+	if (Undertale::objTimeInst.left) {
 		position.x -= speed * deltaTime;
-
 	}
-	if (IsKeyDown(KEY_RIGHT)) {
-
+	if (Undertale::objTimeInst.up) {
+		position.y -= speed * deltaTime;
+	}
+	if (Undertale::objTimeInst.right) {
 		position.x += speed * deltaTime;
-
 	}
-	if (IsKeyDown(KEY_DOWN)) {
-
+	if (Undertale::objTimeInst.down) {
 		position.y += speed * deltaTime;
 	}
-	if (IsKeyDown(KEY_UP)) {
 
-		position.y -= speed * deltaTime;
+	// ---- Sprite code ----
 
+	if (Undertale::objTimeInst.right) {
+		if (sprite != rightSprite) {
+			sprite = rightSprite;
+		}
 	}
 
+	if (Undertale::objTimeInst.left) {
+		if (sprite != leftSprite) {
+			sprite = leftSprite;
+		}
+	}
+
+	if (Undertale::objTimeInst.up) {
+		if (sprite != upSprite) {
+			sprite = upSprite;
+		}
+	}
+
+	if (Undertale::objTimeInst.down) {
+		if (sprite != downSprite) {
+			sprite = downSprite;
+		}
+	}
+
+	// ---- Collision code ----
 	Vector2 pos = position;
 	pos.y += 19.0f;//GetSprite().size.y;
 	Rectangle plrRect = { pos.x + 2, pos.y + 15, 16, 14 };

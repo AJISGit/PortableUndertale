@@ -37,6 +37,7 @@ namespace Undertale {
 		Camera2D& GetCamera();
 		std::vector<Instance*>& GetMainInstances();
 		std::vector<Instance*>& GetSolidInstances();
+		ObjMainChara* GetPlayer();
 		Sheets& GetSheetloader();
 
 	};
