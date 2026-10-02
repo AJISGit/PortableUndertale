@@ -115,7 +115,6 @@ Undertale::Instance* Undertale::CreateInstanceFromObjName(std::string_view objNa
 
 
 bool Undertale::Instance::IsSolid() const {
-	std::cout << "Is Solid: " << solid << '\n';
 	return solid;
 }
 

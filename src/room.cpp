@@ -13,7 +13,6 @@ Undertale::Room::Room(const std::vector<Undertale::Tile>& tiles, const std::vect
 		return;
 	}
 
-	std::cout << "storing the player\n";
 	plr = static_cast<ObjMainChara*>(instances[mainCharaIdx]);
 	camera.target = plr->position;
 
@@ -101,7 +100,6 @@ Undertale::Room Undertale::LoadRoomFromFile(std::string_view filename, Undertale
 		std::exit(1);
 	}
 
-	//std::cout << "----Loading Tiles----\n";
 	std::vector<Undertale::Tile> tiles = { };
 
 	for (pugi::xml_node node : doc.child("room").child("tiles").children()) {
@@ -114,7 +112,6 @@ Undertale::Room Undertale::LoadRoomFromFile(std::string_view filename, Undertale
 
 	}
 
-	//std::cout << "----Loading Instances----\n";
 	
 	int mainCharaIdx = -1;
 
@@ -141,7 +138,6 @@ Undertale::Room Undertale::LoadRoomFromFile(std::string_view filename, Undertale
 		} else {
 			solidInstances.push_back(inst);
 			solidIdx++;
-			std::cout << "Added " << objName << " to solidInstances\n";
 		}
 
 	}

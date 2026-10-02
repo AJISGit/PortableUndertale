@@ -8,7 +8,7 @@ const float cameraSpeed = 200.0f;
 
 int main(int argc, char** argv) {
 
-	//SetTraceLogLevel(LOG_WARNING);
+	SetTraceLogLevel(LOG_WARNING);
 	InitWindow(640, 480, "UNDERTALE");
 	InitAudioDevice();
 	SetTargetFPS(30);

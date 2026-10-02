@@ -1,11 +1,9 @@
 #include <undertale/objects/mainchara.hpp>
 #include <undertale/room.hpp>
-#include <iostream>
 
 
 Undertale::ObjMainChara::ObjMainChara(std::string_view filename) : Undertale::Instance::Instance(filename) {
 	LoadBasicInstance();
-	std::cout << "obj_mainchara sprite size: { " << GetSprite().size.x << ", " << GetSprite().size.y << " }\n";
 }
 
 
@@ -60,7 +58,6 @@ void Undertale::ObjMainChara::Update(float deltaTime, void* arg) {
 		Color color = { (unsigned char) GetRandomValue(0, 255), (unsigned char) GetRandomValue(0, 255), (unsigned char) GetRandomValue(0, 255), 200 };
 
 		if (CheckCollisionRecs(plrRect, instRect)) {
-			std::cout << "Collision time: " << instSpr.frames[solidInst->GetSpriteFrame()] << '\n';
 			position = lastPos;
 			break;
 		}
