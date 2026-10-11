@@ -1,5 +1,6 @@
 #include <undertale/room.hpp>
 #include <undertale/objects/time.hpp>
+#include <undertale/animmanager.hpp>
 #include <iostream>
 
 
@@ -146,6 +147,9 @@ Undertale::Room Undertale::LoadRoomFromFile(std::string_view filename, Undertale
 		} else {
 			solidInstances.push_back(inst);
 			solidIdx++;
+		}
+		if (inst->visible) {			
+			Undertale::animManager.AddInst(inst);
 		}
 
 	}

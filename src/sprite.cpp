@@ -40,7 +40,11 @@ Undertale::Sprite Undertale::LoadSprite(std::string_view spriteName) {
 
 void Undertale::DrawSprite(const Undertale::Sprite &sprite, Vector2 position, int frame, Undertale::Sheets &sheets) {
 
-	Texture2D texture = sheets.GetSheet(sprite.frames[frame], Undertale::SheetType::Sprite);
+	size_t currentFrame = frame;
+	if (currentFrame >= sprite.frames.size()) {
+		currentFrame = sprite.frames.size() - 1;
+	}
+	Texture2D texture = sheets.GetSheet(sprite.frames[currentFrame], Undertale::SheetType::Sprite);
 	Vector2 pos = position;
 	pos.x += sprite.bbox.left;
 	pos.y += sprite.bbox.top;

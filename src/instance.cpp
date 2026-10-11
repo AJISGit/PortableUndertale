@@ -92,6 +92,10 @@ void Undertale::Instance::SetSpriteFrame(int frame) {
 
 
 void Undertale::Instance::IncrementSpriteFrame() {
+	if (spriteFrame + 1 >= GetSprite().frames.size()) {
+		SetSpriteFrame(0);
+		return;
+	}
 	SetSpriteFrame(spriteFrame + 1);
 }
 

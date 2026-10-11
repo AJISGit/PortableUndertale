@@ -13,6 +13,7 @@ namespace Undertale {
 		Sprite rightSprite = { };
 
 		public:
+		bool moving = false;
 		ObjMainChara(std::string_view filename = "obj_mainchara");
 		virtual void Update(float deltaTime, void* arg = nullptr) override;
 

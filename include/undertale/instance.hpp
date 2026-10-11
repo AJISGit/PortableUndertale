@@ -28,6 +28,7 @@ namespace Undertale {
 		public:
 
 		Vector2 position = { };
+		float imageSpeed = 1.0f;
 		bool visible = false;
 
 		Instance(std::string_view filename = "NO_FILE_PLACEHOLDER");

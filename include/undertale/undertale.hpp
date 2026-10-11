@@ -5,10 +5,13 @@
 namespace Undertale {
 
 	class ObjTime;
+	class AnimationManager;
 
 	extern Music* currentSong;
 	extern bool debug;
+
 	extern ObjTime objTimeInst;
+	extern AnimationManager animManager;
 
 
 	constexpr int UpKey = KEY_UP;

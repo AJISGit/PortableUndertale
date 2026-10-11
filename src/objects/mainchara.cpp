@@ -1,6 +1,7 @@
 #include <undertale/objects/mainchara.hpp>
 #include <undertale/objects/time.hpp>
 #include <undertale/room.hpp>
+#include <cmath>
 
 
 Undertale::ObjMainChara::ObjMainChara(std::string_view filename) : Undertale::Instance::Instance(filename) {
@@ -26,6 +27,7 @@ void Undertale::ObjMainChara::Update(float deltaTime, void* arg) {
 	constexpr float speed = 50.0f;
 	Vector2 lastPos = position;
 
+
 	if (Undertale::objTimeInst.left) {
 		position.x -= speed * deltaTime;
 	}
@@ -39,6 +41,11 @@ void Undertale::ObjMainChara::Update(float deltaTime, void* arg) {
 		position.y += speed * deltaTime;
 	}
 
+	if (std::fabs(lastPos.x - position.x) > 0.01 || std::fabs(lastPos.y - position.y) > 0.01) {
+		moving = true;
+	} else {
+		moving = false;
+	}
 	// ---- Sprite code ----
 
 	if (Undertale::objTimeInst.right) {
@@ -63,6 +70,13 @@ void Undertale::ObjMainChara::Update(float deltaTime, void* arg) {
 		if (sprite != downSprite) {
 			sprite = downSprite;
 		}
+	}
+
+	if (moving) {
+		imageSpeed = 1.0f;
+	} else {
+		imageSpeed = 0.0f;
+		SetSpriteFrame(1);
 	}
 
 	// ---- Collision code ----

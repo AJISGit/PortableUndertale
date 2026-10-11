@@ -15,6 +15,7 @@ add_executable(undertale
 	include/pugixml.hpp
 	src/pugixml.cpp
 
+	include/undertale/animmanager.hpp
 	include/undertale/undertale.hpp
 	include/undertale/sprite.hpp
 	include/undertale/instance.hpp
@@ -30,6 +31,7 @@ add_executable(undertale
 	include/undertale.hpp
 
 
+	src/animmanager.cpp
 	src/undertale.cpp
 	src/sprite.cpp
 	src/instance.cpp
