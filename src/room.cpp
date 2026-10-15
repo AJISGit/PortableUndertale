@@ -30,6 +30,16 @@ Undertale::Room::~Room() {
 }
 
 
+void Undertale::Room::DrawInst(Undertale::Instance& inst) {
+	if (inst.useDrawInst) {
+		Undertale::DrawInstance(inst, sheets);
+	}
+	if (inst.useDrawMethod) {
+		inst.Draw(sheets);
+	}
+}
+
+
 std::vector<Undertale::Tile> Undertale::Room::GetTiles() const {
 	return tiles;
 }
@@ -62,13 +72,13 @@ void Undertale::Room::Draw() {
 		Undertale::DrawTile(tile, sheets);
 	}
 	for (Undertale::Instance* inst : instances) {
-		Undertale::DrawInstance(*inst, sheets);
+		DrawInst(*inst);
 		if (inst == plr) {
 			continue;
 		}
 	}
 	for (Undertale::Instance* inst : solidInstances) {
-		Undertale::DrawInstance(*inst, sheets);
+		DrawInst(*inst);
 	}
 	Undertale::DrawInstance(*plr, sheets);
 

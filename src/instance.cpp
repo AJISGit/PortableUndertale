@@ -71,6 +71,11 @@ void Undertale::Instance::Update(float deltaTime, void* arg) {
 }
 
 
+void Undertale::Instance::Draw(Undertale::Sheets& sheets) {
+	return;
+}
+
+
 bool Undertale::Instance::HasSprite() const {
 	return hasSprite;
 }

@@ -24,6 +24,8 @@ namespace Undertale {
 		Camera2D camera = { };
 		ObjMainChara* plr = nullptr;
 
+		void DrawInst(Instance& inst);
+
 		public:
 
 		Room(const std::vector<Tile>& tiles, const std::vector<Instance*>& instances, const std::vector<Instance*>& solidInstances, Sheets& sheets, int mainCharaIdx);

@@ -10,7 +10,7 @@ namespace Undertale {
 
 	constexpr char OBJ_FILEPREFIX[] = "GameData/objects/";
 	constexpr char OBJ_FILEEXTENSION[] = ".object.gmx";
-
+	
 	class Instance {
 
 		private:
@@ -31,9 +31,14 @@ namespace Undertale {
 		float imageSpeed = 1.0f;
 		bool visible = false;
 
+		bool useDrawInst = true; // Draw it using Undertale::DrawInstance
+		bool useDrawMethod = false; // Call the Draw method
+
+
 		Instance(std::string_view filename = "NO_FILE_PLACEHOLDER");
 		virtual ~Instance();
 		virtual void Update(float deltaTime, void* arg = nullptr);
+		virtual void Draw(Sheets& sheets);
 
 		bool HasSprite() const;
 		Sprite GetSprite() const;
