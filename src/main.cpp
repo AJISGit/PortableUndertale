@@ -28,6 +28,8 @@ int main(int argc, char** argv) {
 	bool fullscreen = false;
 	int monitor = GetCurrentMonitor();
 
+	std::cout << "Hey\n";
+
 
 	while (!WindowShouldClose()) {
 

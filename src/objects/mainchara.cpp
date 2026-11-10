@@ -2,6 +2,7 @@
 #include <undertale/objects/time.hpp>
 #include <undertale/room.hpp>
 #include <cmath>
+#include <iostream>
 
 
 Undertale::ObjMainChara::ObjMainChara(std::string_view filename) : Undertale::Instance::Instance(filename) {
@@ -10,6 +11,11 @@ Undertale::ObjMainChara::ObjMainChara(std::string_view filename) : Undertale::In
 	downSprite = LoadSprite("spr_maincharad");
 	leftSprite = LoadSprite("spr_maincharal");
 	rightSprite = LoadSprite("spr_maincharar");
+	AlarmArray& alarms = GetAlarms();
+	alarms[0].SetCallback([](){
+		std::cout << "Alarm!\n";
+	});
+	alarms[0].SetCounter(5);
 }
 
 
