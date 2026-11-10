@@ -40,6 +40,18 @@ void Undertale::Room::DrawInst(Undertale::Instance& inst) {
 }
 
 
+void Undertale::Room::UpdateAlarms(Undertale::Instance &inst) {
+	Undertale::AlarmArray& alarms = inst.GetAlarms();
+
+	for (Undertale::Alarm& alarm : alarms) {
+		
+		alarm.DecrementCounter();
+
+	}
+
+}
+
+
 std::vector<Undertale::Tile> Undertale::Room::GetTiles() const {
 	return tiles;
 }
@@ -50,13 +62,16 @@ void Undertale::Room::Update(float deltaTime) {
 	Undertale::objTimeInst.Update(deltaTime, this);
 
 	for (Undertale::Instance* inst : instances) {
+		UpdateAlarms(*inst);
 		inst->Update(deltaTime, this);
 	}
 	for (Undertale::Instance* inst : solidInstances) {
+		UpdateAlarms(*inst);
 		inst->Update(deltaTime, this);
 	}
 
 	if (plr == nullptr) { return; };
+	UpdateAlarms(*plr);
 	plr->Update(deltaTime, this);
 	camera.target.x = plr->position.x - (GetScreenWidth() / 2) / camera.zoom;
 	camera.target.y = plr->position.y - (GetScreenHeight() / 2) / camera.zoom;

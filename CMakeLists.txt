@@ -18,6 +18,7 @@ add_executable(undertale
 	include/undertale/animmanager.hpp
 	include/undertale/undertale.hpp
 	include/undertale/sprite.hpp
+	include/undertale/alarm.hpp
 	include/undertale/instance.hpp
 	include/undertale/objects/time.hpp
 	include/undertale/objects/introimage.hpp
@@ -25,6 +26,8 @@ add_executable(undertale
 	include/undertale/objects/spiketile2.hpp
 	include/undertale/objects/spiketile1.hpp
 	include/undertale/objects/mainchara.hpp
+	include/undertale/scripts/textsetup.hpp
+	include/undertale/objects/basewriter.hpp
 	include/undertale/sheetloader.hpp
 	include/undertale/tile.hpp
 	include/undertale/room.hpp
@@ -34,6 +37,7 @@ add_executable(undertale
 	src/animmanager.cpp
 	src/undertale.cpp
 	src/sprite.cpp
+	src/alarm.cpp
 	src/instance.cpp
 	src/objects/time.cpp
 	src/objects/introimage.cpp
@@ -41,6 +45,8 @@ add_executable(undertale
 	src/objects/spiketile2.cpp
 	src/objects/spiketile1.cpp
 	src/objects/mainchara.cpp
+	src/scripts/textsetup.cpp
+	src/objects/basewriter.cpp
 	src/sheetloader.cpp
 	src/tile.cpp
 	src/room.cpp

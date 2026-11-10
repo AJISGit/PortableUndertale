@@ -47,11 +47,13 @@ int main(int argc, char** argv) {
 		BeginTextureMode(renderTexture);
 
 			ClearBackground(BLACK);
+			
 			if (IsWindowFullscreen()) {
-				camera.target.x += 340.0f / 4.0f;
-				camera.target.y += 240.0f / 4.0f;
+				camera.target.x += 340.0f / 4.5f;
+				camera.target.y += 240.0f / 4.5f;
 				std::cout << "Hey\n";
 			}
+			
 			BeginMode2D(camera);	
 				testRoom.Draw();
 			EndMode2D();
@@ -75,9 +77,7 @@ int main(int argc, char** argv) {
 				0.0f,
 				WHITE
 			);
-
-			//DrawTextureEx(renderTexture.texture, { 0.0f, 0.0f }, 0.0f, scale, WHITE);
-
+			
 			DrawFPS(10, 10);
 			
 		EndDrawing();

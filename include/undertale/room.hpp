@@ -25,6 +25,7 @@ namespace Undertale {
 		ObjMainChara* plr = nullptr;
 
 		void DrawInst(Instance& inst);
+		void UpdateAlarms(Instance& inst);
 
 		public:
 

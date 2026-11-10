@@ -142,3 +142,8 @@ bool Undertale::Instance::IsSolid() const {
 	return solid;
 }
 
+
+Undertale::AlarmArray& Undertale::Instance::GetAlarms() {
+	return alarms;
+}
+

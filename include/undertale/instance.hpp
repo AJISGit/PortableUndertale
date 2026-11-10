@@ -2,20 +2,25 @@
 #include <undertale/undertale.hpp>
 #include <undertale/sheetloader.hpp>
 #include <undertale/sprite.hpp>
+#include <undertale/alarm.hpp>
 #include <pugixml.hpp>
 #include <string>
+#include <array>
 
 
 namespace Undertale {
 
 	constexpr char OBJ_FILEPREFIX[] = "GameData/objects/";
 	constexpr char OBJ_FILEEXTENSION[] = ".object.gmx";
+
+	using AlarmArray = std::array<Undertale::Alarm, 12>;
 	
 	class Instance {
 
 		private:
 		int spriteFrame = 0;
 		bool solid = false;
+		AlarmArray alarms = { };
 
 		protected:
 		std::string filename;
@@ -37,6 +42,7 @@ namespace Undertale {
 
 		Instance(std::string_view filename = "NO_FILE_PLACEHOLDER");
 		virtual ~Instance();
+		void PreUpdate(float deltaTime);
 		virtual void Update(float deltaTime, void* arg = nullptr);
 		virtual void Draw(Sheets& sheets);
 
@@ -49,6 +55,8 @@ namespace Undertale {
 		void DecrementSpriteFrame();
 
 		bool IsSolid() const;
+
+		AlarmArray& GetAlarms();	
 
 	};
 
